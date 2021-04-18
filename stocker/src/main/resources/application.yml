@@ -1,0 +1,23 @@
+server:
+  port: 3001
+  servlet:
+    context-path: /stocker
+
+spring:
+  application:
+    name: stocker
+
+alphavantage-intraday:
+  url: https://www.alphavantage.co
+  uri: /query
+  function: function=TIME_SERIES_INTRADAY
+  symbol: symbol=
+  apiKey: apikey=demo
+  interval: interval=5min
+
+alphavantage-static:
+  timeSeries:
+    intraday: Time Series (5min)
+    daily: Time Series (Daily)
+    weekly: Weekly Time Series
+    monthly: Monthly Time Series
