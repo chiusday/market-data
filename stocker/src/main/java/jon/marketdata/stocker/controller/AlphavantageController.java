@@ -16,8 +16,9 @@ public class AlphavantageController {
         this.AVService = AVService;
     }
 
-    @GetMapping(value = "/stock/intraday/{id}", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
+    @GetMapping(value = "/av/intraday/{id}", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
     public Flux<IntradayTicker> getIntradayTickers(@PathVariable String id) {
+
         return AVService.getIntradayList(id);
     }
 }
