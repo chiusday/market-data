@@ -18,7 +18,7 @@ alphavantage-intraday:
   uri: /query
   function: function=TIME_SERIES_INTRADAY
   symbol: symbol=
-  apiKey: apikey=6BTX1GJFPPY37E4K
+  apiKey: apikey=demo
   interval: interval=5min
 
 alphavantage-static:
