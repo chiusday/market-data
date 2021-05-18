@@ -9,9 +9,9 @@ spring:
 
   kafka:
     producer:
-      bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
-      key-serializer: org.apache.kafka.common.serializer.IntegerSerializer
-      value-serializer: org.apache.kafka.common.serializer.StringSerializer
+      bootstrap-servers: localhost:9092, localhost:9093, localhost:9094
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
 alphavantage-intraday:
   url: https://www.alphavantage.co
@@ -27,3 +27,6 @@ alphavantage-static:
     daily: Time Series (Daily)
     weekly: Weekly Time Series
     monthly: Monthly Time Series
+
+file-data-source:
+  intraday: /tickers/Intraday.txt
