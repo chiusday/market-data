@@ -1,4 +1,4 @@
-package jon.marketdata.stocker.producer;
+package jon.marketdata.stocker.kafka.producer;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +9,11 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 
 import java.util.UUID;
 
+/**
+ * Kafka message producer that generates a unique String for each message
+ *
+ * @author chiusday
+ */
 @Slf4j
 public class KafkaProducer {
     @Autowired KafkaTemplate<String, String> kafkaTemplate;
@@ -20,6 +25,12 @@ public class KafkaProducer {
         this.topic = topic;
     }
 
+    /**
+     * Sends a String message to kafka broker. The key is randomly generated for each
+     * message using {@link UUID#randomUUID()}
+     *
+     * @param message kafka message to be sent to the broker
+     */
     public void send(String message) {
         String key = UUID.randomUUID().toString();
         ListenableFuture<SendResult<String, String>> future =

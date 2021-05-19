@@ -1,10 +1,10 @@
 package jon.marketdata.stocker;
 
 import jon.marketdata.stocker.config.AlphavantageStatic;
+import jon.marketdata.stocker.kafka.producer.KafkaKeyedProducer;
+import jon.marketdata.stocker.kafka.producer.KafkaProducer;
 import jon.marketdata.stocker.model.AVIntradayTicker;
 import jon.marketdata.stocker.model.IntradayTicker;
-import jon.marketdata.stocker.producer.KafkaKeyedProducer;
-import jon.marketdata.stocker.producer.KafkaProducer;
 import jon.marketdata.stocker.service.converter.RxAVJsonToIntradayTickerList;
 import jon.marketdata.stocker.service.converter.RxAVJsonToTickerConverter;
 import org.springframework.beans.factory.annotation.Autowired;

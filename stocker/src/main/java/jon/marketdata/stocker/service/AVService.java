@@ -2,8 +2,8 @@ package jon.marketdata.stocker.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import jon.marketdata.stocker.filedatasource.IntradayFileData;
+import jon.marketdata.stocker.kafka.producer.KafkaProducer;
 import jon.marketdata.stocker.model.IntradayTicker;
-import jon.marketdata.stocker.producer.KafkaProducer;
 import jon.marketdata.stocker.service.converter.RxAVJsonToIntradayTickerList;
 import jon.marketdata.stocker.service.webdatasource.IntradayWebData;
 import lombok.extern.slf4j.Slf4j;
