@@ -1,12 +1,11 @@
 package jon.marketdata.stocker.model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public class Ticker extends TickerBase {
     protected double open;
     protected double close;
@@ -15,5 +14,14 @@ public class Ticker extends TickerBase {
 
     public Ticker(String symbol) {
         super(symbol);
+    }
+
+    @Builder
+    public Ticker(String symbol, double open, double close, double high, double low) {
+        this(symbol);
+        this.open = open;
+        this.close = close;
+        this.high = high;
+        this.low = low;
     }
 }
