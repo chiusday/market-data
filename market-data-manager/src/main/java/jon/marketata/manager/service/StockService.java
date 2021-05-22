@@ -14,9 +14,11 @@ import static jon.marketata.manager.cache.StockCache.IntradayTickerQueue;
 @Slf4j
 @Service
 public class StockService {
-    public final int sleep = 100;
-    public final int limit = 250; //10 = 1 sec
+    private final MessageWaitConfig waitConfig;
 
+    public StockService(MessageWaitConfig messageWaitConfig) {
+        this.waitConfig = messageWaitConfig;
+    }
     /**
      * Retrieves tickers from in memory Queue. This Queue could be populated from DB
      * Kafka, etc. This is meant to simulate a stream source of data that may emit
