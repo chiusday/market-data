@@ -22,18 +22,18 @@ import static jon.marketdata.stocker.utils.NumberUtils.Round;
 public class SimulatedStockService {
     public static final int spread = 5;
     public static final int decimalPlaces = 4;
-    public static AtomicLong recordId = new AtomicLong();
 
     /**
      * Creates a random IntradayTicker object using the provided symbol. The number
      * of created tickers is equal to the provided limit.
-     * The recordId is the a class level AtomicLong so it will increment across requests
+     * The recordId is tied to the request. It starts to 1 per request.
      *
      * @param symbol value used as the IntradayTicker's symbol
      * @param limit number of random IntradayTickers to create
      * @return Flux of randomly created IntradayTickers
      */
     public Flux<IntradayTicker> simulate(String symbol, long limit) {
+        AtomicLong recordId = new AtomicLong();
         return Flux.just(symbol)
                 .map(s -> randomIntradayTicker(s, recordId.incrementAndGet()))
                 .repeat(limit - 1);
