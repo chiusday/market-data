@@ -1,5 +1,6 @@
 package jon.marketata.manager.service;
 
+import jon.marketata.manager.config.MessageWaitConfig;
 import jon.marketata.manager.model.IntradayTicker;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -29,8 +30,8 @@ public class StockService {
      * source of the Queue to insert data into the queue.
      *
      * @return IntradayTicker from the in-memory Queue. Each ticker emitted is polled
-     * from the queue. When the limit is reached, and no new data in the queue, the Flux
-     * sink will complete and the generation will stop.
+     * from the queue. When the cycles equal or greater than the snooze value, and no
+     * new data in the queue, the Flux sink will complete and the generation will stop.
      * The cycle is reset everytime there is a new Ticker in the Queue.
      */
     public Flux<IntradayTicker> getTickers() {
@@ -38,12 +39,12 @@ public class StockService {
                 IntradayTickerQueue::poll,
                 (state, sink) -> {
                     int cycles = 1;
-                    while (state==null && (cycles++ <= limit)) {
-                        try { Thread.sleep(sleep); }
+                    while (state==null && (cycles++ <= waitConfig.getSnooze())) {
+                        try { Thread.sleep(waitConfig.getSleep()); }
                         catch (InterruptedException e) { e.printStackTrace();}
                         state = IntradayTickerQueue.poll();
                     }
-                    if (state==null || cycles >= limit)
+                    if (state==null || cycles >= waitConfig.getSnooze())
                         sink.complete();
                     else
                         sink.next(state);
