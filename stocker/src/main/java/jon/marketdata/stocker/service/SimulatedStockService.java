@@ -1,12 +1,12 @@
 package jon.marketdata.stocker.service;
 
+import static jon.marketdata.stocker.utils.TimeUtils.GetZonedNow;
 import jon.marketdata.stocker.model.IntradayTicker;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
 import java.math.RoundingMode;
-import java.time.Instant;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -54,7 +54,7 @@ public class SimulatedStockService {
                 getRandomPrice(symbol, spread),
                 getRandomPrice(symbol, spread),
                 getRandomPrice(symbol, spread),
-                Instant.now().toString()
+                GetZonedNow().toString()
         );
     }
 
