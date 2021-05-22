@@ -13,3 +13,11 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       group-id: stock-consumer
+
+message-wait:
+  #milliseconds to sleep before checking if again if internal queue has message for the
+  #flux to generate. The flux could handle this silently but the it will be a waste of CPU.
+  sleep: 100
+  #number of times (sleep * snooze) the flux generte will check for new messages. If this
+  #limit is reached. The flux onComplete() will execute and message emission will stop.
+  snooze: 150
