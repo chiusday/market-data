@@ -36,7 +36,7 @@ public class StockKafkaConsumer {
             throws JsonProcessingException {
 
         IntradayTicker ticker = getIntradayTicker(consumerRecord.value());
-        log.info("Received: {}", ticker);
+        log.info("Consumer record: "+consumerRecord.toString());
         IntradayTickerQueue.add(ticker);
     }
 }
