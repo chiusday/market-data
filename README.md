@@ -81,12 +81,12 @@ listeners=PLAINTEXT://localhost:9094
 ```
 
 ![](market-data-manager/src/main/resources/images/stock-topic-description.png)
-**Make sure that stock-topice is in all 3 partitions and all 3 partitions have unique values for Leader, Replicas, and Isr.**
+**Make sure that stock-topic is in all 3 partitions and all 3 partitions have unique values for Leader, Replicas, and Isr.**
 
 </p>
 </details>
 
-## Simulate an Intraday Stock in Stocker then stream it in the UI with Market Data Manager
+## Simulate Stock Prices in Stocker then stream them in the UI with Market Data Manager
 
 - Run [stocker](https://github.com/chiusday/market-data/tree/main/stocker)
 - Run [market-data-manager](https://github.com/chiusday/market-data/tree/main/market-data-manager)
