@@ -1,5 +1,5 @@
 # stocker
-Stock prices procurer. This API takes care of sourcing out stock prices and returns the queried prices to the caller.
+Stock prices procurer. This API takes care of sourcing out stock prices and push the queried prices to Kafka.
 This doesn't persist the data so information is always live as of source (cloud, file, other systems, etc). Analytics and other data manipulation should be handled by [market-data-manager api](https://github.com/chiusday/market-data)
 
 ## Overview:
