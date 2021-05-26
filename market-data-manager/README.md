@@ -1,6 +1,6 @@
 # market-data-manager
 This is a Webflux version of [vertex-reactive](https://github.com/chiusday/samples/tree/master/vertx-reactive) project.
-An API that reactively show the UI tickers from stocker simulated stocks.
+An API that reactively show the tickers from stocker simulated stocks to the UI.
 
 ## Overview:
 ![](src/main/resources/images/market-data-manager.png)
